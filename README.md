@@ -1,4 +1,4 @@
-#EducaKids
+# EducaKids
 
 Aplicativo EducaKids para o TCC do curso de Engenharia Web, SENAC LAPA TITO 2018
 
@@ -6,20 +6,20 @@ Aplicativo EducaKids para o TCC do curso de Engenharia Web, SENAC LAPA TITO 2018
 
 Para inicializar instale as dependencias do projeto com o seguinte comando:
 
-```npm install```
+```$ npm install```
 
-#Rodar
+# Rodar
 
 Para a execução em ambiente de desenvolvimento execute:
 
-```npm start```
+```$ npm start```
 
 Acesso em: 
 
 ```localhost:3000```
 
-#Build de produção
+# Build de produção
 
 Para o build em produção rodar executar 
 
-```npm run build``` 
+```$ npm run build``` 
