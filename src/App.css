@@ -8,10 +8,22 @@
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
+  background-color: #E5E9F2;
+  height: 300px;
   padding: 20px;
   color: white;
+}
+
+.Filho-header {
+  background-color: rgb(216, 36, 4);
+  height: 80px;
+  margin-top: 60px;
+  color: white;
+}
+
+.nome-filho {
+  font-weight: bold;
+  font-size: 1.4rem;
 }
 
 .App-title {
@@ -22,7 +34,19 @@
   font-size: large;
 }
 
+#body {
+  margin-top: 30px; 
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+@media screen and (max-width: 1024px) {
+
+  .logo {
+    margin-top: 40%;
+  }
+
 }
