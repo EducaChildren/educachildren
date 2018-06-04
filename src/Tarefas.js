@@ -15,10 +15,11 @@ class Tarefas extends Component {
                     </tr>
                     {this.props.tarefas.map(row => 
                         <TarefaRow key={row.id} 
+                                    id={row.id} 
                                     tarefa={row.tarefa} 
-                                    data={row.data} 
+                                    data={row.data_conclusao} 
                                     preco={row.preco} 
-                                    status={row.status} 
+                                    status={row.status_tarefa} 
                                     user={this.props.user} 
                         />
                     )}

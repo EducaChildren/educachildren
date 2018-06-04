@@ -4,30 +4,29 @@ import './bootstrap.min.css';
 import './App.css';
 import Tarefas from './Tarefas.js';
 import TelaPai from './TelaPai.js';
+import axios from 'axios';
 
 class App extends Component {
-  
+
   constructor(props) {
     super(props);
     this.saldo = '0.00';
-    this.tarefas = [
-      {
-        id: 1,
-        tarefa: "Teste",
-        data: "30/03/2018",
-        preco: "12,00",
-        status: "a fazer"
-      },
-      {
-          id: 2,
-          tarefa: "Teste 2",
-          data: "30/03/2018",
-          preco: "12,00",
-          status: "concluida"
-      }
-    ];
+    this.tarefas = null;
+
+    axios.get('http://localhost/v1/tarefas')
+      .then(response => {
+        this.tarefas = response.data.data;
+        console.log(this.tarefas);
+      });
+
+    axios.get('http://localhost/v1/user/saldo')
+      .then(response => {
+        this.saldo = response.data.saldo;
+        console.log(this.saldo);
+      });
+
   }
-  
+
   render() {
     return this.renderIndex();
   }
@@ -77,7 +76,7 @@ class App extends Component {
                 <div className="nome-filho">João</div>
               </div>
               <div className="col-4 offset-2">
-                <img className="img-fluid" src="./money-dollar-circle-32.png" alt=""/>
+                <img className="img-fluid" src="./money-dollar-circle-32.png" alt="" />
                 <span>{this.saldo}</span>
               </div>
             </div>
@@ -87,7 +86,7 @@ class App extends Component {
           <div className="container-fluid">
             <div className="row mt-5">
               <div className="col-7">
-                <img className="img-fluid" src="./perfil.png" alt=""/>
+                <img className="img-fluid" src="./perfil.png" alt="" />
               </div>
               <div className="col-4">
                 <h1>FILHO</h1>
@@ -120,7 +119,7 @@ class App extends Component {
   }
 
   renderPai() {
-    ReactDOM.render(<TelaPai />, document.getElementById('root'));
+    ReactDOM.render(<TelaPai tarefas={this.tarefas} />, document.getElementById('root'));
   }
 }
 

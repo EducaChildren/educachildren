@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import axios from 'axios';
+import TelaPai from './TelaPai.js';
 
 class TarefaRow extends Component {
     render() {
@@ -23,8 +26,19 @@ class TarefaRow extends Component {
         return (<a className="btn btn-warning">{tarefaStatus}</a>);
     }
 
-    concluiTarefa() {
-        alert('Tarefa concluida');
+    concluiTarefa(e) {
+        axios.patch('http://localhost/v1/tarefas/' + this.props.id, {
+            status_tarefa: "concluida"
+        }).then(response => {
+            alert('Tarefa concluida');
+            var self = this;
+
+            axios.get('http://localhost/v1/tarefas')
+                .then(response => {
+                    self.tarefas = response.data.data;
+                    ReactDOM.render(<TelaPai tarefas={self.tarefas} />, document.getElementById('root'));
+                });
+        });
     }
 }
 
